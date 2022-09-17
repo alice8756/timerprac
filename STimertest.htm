@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>onehourTimerTest</title>
+</head>
+<style>
+
+    body{
+    background:radial-gradient(#DAE7F0,#FADAE7);
+    color:white;
+    }
+
+    h1{
+        position: relative;
+        color:white;
+        font-size:300px;
+        
+    }
+    
+    .btn-lg{
+        color: white;
+        border: solid 2px white;
+        border-radius: 20px;
+    }
+    
+    .btn-lg:hover{
+        color:#82929e;
+        border: solid 2px #82929e;
+    }
+
+</style>
+<body>
+    <div id="app" class="container-fluid">
+        <h2 class="text-center mt-3">
+            Let's take a deep breath...
+        </h2>
+        <h1 class="text-center">{{time}}</h1>
+        <ul class="list-inline text-center">
+        <li class=" list-inline-item btn-lg btn" @click="start()">start</li>
+        <li class="list-inline-item btn-lg btn" @click="stop()">Pause</li>
+    </ul>
+    </div>
+    
+
+    <script>
+const vm = Vue.createApp({
+    data() {
+        return {
+        timer: null,
+        time: 15
+        }
+    },
+start() {
+    this.timer=setInterval(this.countdown, 1000);
+},
+methods: {
+    start() {
+    this.timer = setInterval(this.countdown, 1000);
+    if(this.time==0){
+        clearInterval(this.timer)
+        }
+},
+stop(){
+        clearInterval(this.timer)
+    },
+    countdown() {
+        this.time --;
+        if(this.time==0){
+        clearInterval(this.timer)
+        }
+    },
+    stop(){
+        clearInterval(this.timer)
+    }
+    },
+beforeDestroy() {
+    clearInterval(this.timer);
+    }
+}).mount('#app')
+    </script>
+</body>
+</html>

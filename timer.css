@@ -1,0 +1,22 @@
+body{
+    background:radial-gradient(#DAE7F0,#FADAE7);
+    color:white;
+    }
+
+    h1{
+        position: relative;
+        color:white;
+        font-size:300px;
+        
+    }
+    
+    .btn-lg{
+        color: white;
+        border: solid 2px white;
+        border-radius: 20px;
+    }
+    
+    .btn-lg:hover{
+        color:#82929e;
+        border: solid 2px #82929e;
+    }
